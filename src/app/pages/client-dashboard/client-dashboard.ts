@@ -34,7 +34,7 @@ export class ClientDashboard {
   private fb = inject(NonNullableFormBuilder);
   loanForm = this.fb.group({
     amount: this.fb.control('', [Validators.required]),
-    term: this.fb.control('', [Validators.required]),
+    termInMonths: this.fb.control('', [Validators.required]),
   });
 
   submitForm(): void {
