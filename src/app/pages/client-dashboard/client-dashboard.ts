@@ -14,6 +14,7 @@ interface Loan {
   key: string;
   amount: number;
   status: string;
+  termInMonths: number;
 }
 
 @Component({
@@ -27,7 +28,8 @@ export class ClientDashboard {
     {
       key: '1',
       amount: 1000,
-      status: 'Active'
+      status: 'Active',
+      termInMonths: 12
     },
   ];
 

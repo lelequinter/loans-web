@@ -8,6 +8,7 @@ interface LoanWithUser {
   user: string;
   amount: number;
   status: string;
+  termInMonths: number;
 }
 
 @Component({
@@ -22,7 +23,8 @@ export class AdminDashboard {
       key: '1',
       user: 'John Doe',
       amount: 1000,
-      status: 'Active'
+      status: 'Active',
+      termInMonths: 12
     },
   ];
 }
