@@ -8,11 +8,15 @@ import { es_ES, provideNzI18n } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 
+import { DollarOutline, LogoutOutline } from '@ant-design/icons-angular/icons';
+
+const iconsImport = [DollarOutline, LogoutOutline, ...icons];
+
 registerLocaleData(es);
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideNzIcons(icons), provideNzI18n(es_ES)
+    provideRouter(routes), provideNzIcons(iconsImport), provideNzI18n(es_ES)
   ]
 };

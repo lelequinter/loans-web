@@ -1,0 +1,27 @@
+<h1>Gestionar Solicitudes de Préstamos</h1>
+<nz-divider />
+
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Monto</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of basicTable.data; track data) {
+    <tr>
+      <td>{{ data.user }}</td>
+      <td>{{ data.amount }}</td>
+      <td>{{ data.status }}</td>
+      <td >
+        <button nz-button nzType="primary" nzSize="small">Aprobar</button>
+        <span style="margin: 0 8px;"></span>
+        <button nz-button nzType="primary" nzDanger nzSize="small">Rechazar</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</nz-table>

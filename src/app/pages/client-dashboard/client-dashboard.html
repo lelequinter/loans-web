@@ -1,0 +1,48 @@
+<h1>Mis Préstamos</h1>
+<nz-divider />
+
+<h2>Solicitar Préstamo</h2>
+<p>Ingrese el monto que desea solicitar</p>
+
+<form nz-form [formGroup]="loanForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label nzFor="amount">Monto del préstamo</nz-form-label>
+    <nz-form-control nzErrorTip="Porfavor ingrese el monto!">
+      <nz-input-wrapper>
+        <nz-icon nzInputPrefix nzType="dollar" nzTheme="outline" />
+        <input type="number" nz-input formControlName="amount" placeholder="Monto a solicitar" />
+      </nz-input-wrapper>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="term">Plazo del préstamo (meses)</nz-form-label>
+    <nz-form-control nzErrorTip="Porfavor ingrese un plazo mayor a 0!">
+      <nz-input-wrapper>
+        <nz-icon nzInputPrefix nzType="calendar" nzTheme="outline" />
+        <input type="number" nz-input formControlName="term" placeholder="Plazo en meses" />
+      </nz-input-wrapper>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  <button nz-button class="login-form-button login-form-margin" nzType="primary">Solicitar Préstamo</button>
+</form>
+<nz-divider />
+
+<h2>Mis Préstamos</h2>
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Monto</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of basicTable.data; track data) {
+    <tr>
+      <td>{{ data.amount }}</td>
+      <td>{{ data.status }}</td>
+    </tr>
+    }
+  </tbody>
+</nz-table>
