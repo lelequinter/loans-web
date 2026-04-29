@@ -11,9 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-      - run: npm ci && ng build
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Build app inside Docker
+        run: |
+          docker build --target build -t loans-web-build .
+          docker create --name temp loans-web-build
+          rm -rf dist
+          mkdir -p dist
+          docker cp temp:/app/dist/loans-web ./dist
+          docker rm temp
+
+      - name: Install dependencies for Firebase
+        run: npm ci
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
