@@ -25,9 +25,8 @@ jobs:
           docker cp temp:/app/dist/loans-web ./dist
           docker rm temp
 
-      #- uses: FirebaseExtended/action-hosting-deploy@v0
-      #   run: npm install -g @angular/cli
-      # - run: npm ci && ng build
+      - name: Install dependencies for Firebase
+        run: npm ci
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
